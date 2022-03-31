@@ -16,14 +16,12 @@ const EditItem: React.FC<{
 		[newEnd, setNewEnd] = useState(end),
 		[err, setErr] = useState(""),
 		today = new Date(),
-		toDate =
-			today.getFullYear() +
-			"-" +
-			(today.getMonth() < 9 ? "0" : "") +
-			(today.getMonth() + 1) +
-			"-" +
-			(today.getDate() < 10 ? "0" : "") +
-			today.getDate();
+		maxDate = new Intl.DateTimeFormat("en-UK", {
+			weekday: "short",
+			year: "2-digit",
+			month: "numeric",
+			day: "numeric",
+		}).format(today);
 
 	return (
 		<div className={styles.edit}>
@@ -63,7 +61,7 @@ const EditItem: React.FC<{
 							return;
 						}
 						if (
-							date === toDate &&
+							date === maxDate &&
 							val >= today.getHours() * 60 + today.getMinutes()
 						) {
 							setErr("End time can't be later than now");

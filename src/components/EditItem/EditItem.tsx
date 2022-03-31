@@ -14,7 +14,16 @@ const EditItem: React.FC<{
 	const dispatch = useDispatch(),
 		[newStart, setNewStart] = useState(start),
 		[newEnd, setNewEnd] = useState(end),
-		[err, setErr] = useState("");
+		[err, setErr] = useState(""),
+		today = new Date(),
+		toDate =
+			today.getFullYear() +
+			"-" +
+			(today.getMonth() < 9 ? "0" : "") +
+			(today.getMonth() + 1) +
+			"-" +
+			(today.getDate() < 10 ? "0" : "") +
+			today.getDate();
 
 	return (
 		<div className={styles.edit}>
@@ -51,6 +60,13 @@ const EditItem: React.FC<{
 							val = +newVal[0] * 60 + +newVal[1];
 						if (val <= newStart) {
 							setErr("End time can't be earlier than start time");
+							return;
+						}
+						if (
+							date === toDate &&
+							val >= today.getHours() * 60 + today.getMinutes()
+						) {
+							setErr("End time can't be later than now");
 							return;
 						}
 						setNewEnd(val);

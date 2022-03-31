@@ -3,26 +3,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import { getDuration } from "../../helper/getTime";
+import { getWeek } from "../../helper/getWeek";
 
 const Perfrm: React.FC = () => {
 	const logs = Object.entries(
-			useSelector((state: RootState) => state.data).logs
-		),
-		getWeek = function (year: number, month: number, day: number) {
-			const date = new Date(year, month, day),
-				week1 = new Date(date.getFullYear(), 0, 4);
-			date.setHours(0, 0, 0, 0);
-			date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
-			return (
-				1 +
-				Math.round(
-					((date.getTime() - week1.getTime()) / 86400000 -
-						3 +
-						((week1.getDay() + 6) % 7)) /
-						7
-				)
-			);
-		};
+		useSelector((state: RootState) => state.data).logs
+	);
+
 	let dSum = 0,
 		days = 0;
 	const monthSum: { [key: string]: number } = {},

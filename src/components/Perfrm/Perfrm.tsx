@@ -53,7 +53,7 @@ const Perfrm: React.FC = () => {
 			<ProgressBar
 				heading={`Monthly average is ${
 					Math.floor(monthAvg / 60) + "h " + (monthAvg % 60) + "m"
-				} per month, 7*24*30h`}
+				} per month, 24*30h`}
 				width={monthAvg / (24 * 6 * 3)}
 			/>
 		</>

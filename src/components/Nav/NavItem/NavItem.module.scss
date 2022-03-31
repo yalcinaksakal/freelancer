@@ -1,0 +1,71 @@
+.item {
+	cursor: pointer;
+	transition: all ease-out 0.1s;
+	fill: rgba(128, 128, 128, 0.694);
+	width: 25px;
+	height: 25px;
+	padding-top: 5px;
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: none;
+
+	&:hover {
+		fill: dodgerblue;
+		transform: scale(1.2);
+	}
+
+	.navItemDetail {
+		position: fixed;
+		width: max-content;
+		top: -10px;
+		left: 8px;
+		transform: translateX(var(--transfer));
+		color: dodgerblue;
+		animation: openModal 0.2s ease-out forwards;
+		font-size: 8px;
+		text-transform: capitalize;
+		@keyframes openModal {
+			0% {
+				opacity: 0;
+				top: -40px;
+			}
+			25% {
+				opacity: 0.1;
+				top: -20px;
+			}
+			50% {
+				opacity: 0.2;
+				top: -17px;
+			}
+			75% {
+				opacity: 0.4;
+				top: -15px;
+			}
+			100% {
+				opacity: 1;
+				top: -10px;
+			}
+		}
+	}
+}
+.active {
+	fill: dodgerblue;
+	transform: scale(1.2);
+}
+.disabled {
+	cursor: default;
+	fill: rgb(164, 164, 164);
+	.navItemDetail {
+		color: rgb(164, 164, 164);
+	}
+	&:active {
+		pointer-events: none;
+	}
+
+	&:hover {
+		fill: rgb(164, 164, 164);
+		transform: scale(1);
+	}
+}

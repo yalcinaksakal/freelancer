@@ -1,0 +1,26 @@
+.container {
+	width: 100%;
+	height: auto;
+	min-height: 530px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	p {
+		width: 100%;
+		font-size: 12px;
+		color: red;
+		text-align: center;
+	}
+	.list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0 auto;
+		padding: 0;
+		width: max-content;
+		max-width: 95%;
+		min-width: 70%;
+	}
+}

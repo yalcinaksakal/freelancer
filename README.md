@@ -4,6 +4,7 @@ Implement frontend of an freelancer app which has following features:
 -view work history
 -add, delete, edit new work log
 -view avg daily, weekly, monthly performance
+-mobile responsive
 
 Tech: React, redux, typescirpt, js, css modules, sass
 

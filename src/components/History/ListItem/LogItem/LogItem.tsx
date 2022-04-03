@@ -10,7 +10,8 @@ const LogItem: React.FC<{
 	end: number;
 	date: string;
 	index: number;
-}> = ({ start, end, date, index }) => {
+	hovered: (index: number) => void;
+}> = ({ start, end, date, index, hovered }) => {
 	const [isDelete, setIsDelete] = useState(false),
 		[isEdit, setIsEdit] = useState(false);
 	return (
@@ -37,7 +38,11 @@ const LogItem: React.FC<{
 					/>
 				</BackDrop>
 			)}
-			<div className={styles.container}>
+			<div
+				onMouseEnter={() => hovered(index)}
+				onMouseLeave={() => hovered(-1)}
+				className={styles.container}
+			>
 				<div>{`${getTime(start)} - ${getTime(end)} : ${getDuration(
 					end - start
 				)}`}</div>

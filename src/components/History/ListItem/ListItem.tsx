@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { getDuration } from "../../../helper/getTime";
+import VisualLog from "../../VisualLog/VisualLog";
 import styles from "./ListItem.module.scss";
 import LogItem from "./LogItem/LogItem";
 
@@ -14,7 +16,11 @@ const ListItem: React.FC<{
 		style = {
 			"--backColor": index % 2 ? "#eff5fb" : "#dce8fa",
 			"--color": duration >= 480 ? "green" : "red",
-		} as React.CSSProperties;
+		} as React.CSSProperties,
+		[activeTimeSlot, setActiveTimeSlot] = useState(-1),
+		handleHover = (index: number) => {
+			setActiveTimeSlot(index);
+		};
 
 	return (
 		<li className={index ? styles.item : styles.heading} style={style}>
@@ -29,11 +35,15 @@ const ListItem: React.FC<{
 							end={log[1]}
 							date={item[0]}
 							index={i}
+							hovered={handleHover}
 						/>
 					))}
 			</div>
 
-			<div className={styles.total}>{total}</div>
+			<div className={styles.total}>
+				<span>{total}</span>
+				{index ? <VisualLog logs={item[1]} activeSlot={activeTimeSlot} /> : ""}
+			</div>
 		</li>
 	);
 };

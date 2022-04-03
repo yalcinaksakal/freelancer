@@ -1,0 +1,12 @@
+.pie {
+	width: 50px;
+	aspect-ratio: 1;
+	position: absolute;
+	margin: 0;
+	margin-top: 3px;
+	padding: 0;
+	top: 0px;
+	transform: rotate(var(--r));
+	border-radius: 50%;
+	background: conic-gradient(var(--c) var(--d), #0000 0);
+}

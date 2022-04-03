@@ -8,12 +8,16 @@
 	font-size: 11px;
 	display: flex;
 	width: calc(100% - 20px);
+	min-height: 65px;
 	.no {
 		width: 30px;
 	}
 	.total {
 		width: 50px;
-		color: var(--color);
+		text-align: center;
+		span {
+			color: var(--color);
+		}
 	}
 	.name {
 		width: calc(100% - 100px);
@@ -27,8 +31,11 @@
 		transform: translateY(-1px);
 		box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px,
 			rgba(0, 0, 0, 0.23) 0px 3px 3px;
-		background: rgb(114, 183, 251);
-		color: whitesmoke;
+		.name {
+			background: rgb(114, 183, 251);
+			color: whitesmoke;
+			border: none;
+		}
 	}
 }
 .heading {
